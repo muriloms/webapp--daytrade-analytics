@@ -1,0 +1,107 @@
+/* frontend/src/pages/StockAnalysisPage/StockAnalysisPage.module.css */
+
+.analysisPageContainer {
+    padding: var(--spacing-lg); /* Padding interno */
+    color: var(--color-text-light); /* Cor do texto padrão */
+    max-width: 900px; /* Largura máxima para o conteúdo central */
+    margin: 0 auto; /* Centraliza o container na área de conteúdo */
+    width: 100%; /* Garante que o container ocupe a largura disponível até o max-width */
+  }
+  
+  .pageTitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-medium); /* Cor do título da página */
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+  }
+  
+  .inputSection {
+    display: flex; /* Organiza input e botão lado a lado */
+    gap: var(--spacing-md); /* Espaço entre os elementos */
+    margin-bottom: var(--spacing-xl);
+    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+    justify-content: center; /* Centraliza os elementos em telas menores */
+  }
+  
+  .tickerInput {
+    flex-grow: 1; /* Permite que o input cresça para preencher o espaço */
+    min-width: 200px; /* Largura mínima para o input */
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-background-card); /* Fundo do input */
+    color: var(--color-text-light); /* Cor do texto digitado */
+    outline: none; /* Remove outline padrão ao focar */
+  }
+  
+  .tickerInput::placeholder {
+      color: var(--color-text-dark); /* Cor do placeholder */
+  }
+  
+  .tickerInput:focus {
+      border-color: var(--color-accent); /* Cor da borda ao focar */
+      box-shadow: 0 0 5px rgba(var(--color-accent-rgb, 83, 52, 131), 0.5); /* Sombra sutil */
+  }
+  
+  .analyzeButton {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-base);
+    background-color: var(--color-primary); /* Cor primária para o botão */
+    color: var(--color-text-light);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease; /* Transição suave */
+  }
+  
+  .analyzeButton:hover:not(:disabled) {
+    background-color: var(--color-accent); /* Cor de acento no hover */
+  }
+  
+  .analyzeButton:disabled {
+    opacity: 0.6; /* Opacidade reduzida quando desabilitado */
+    cursor: not-allowed;
+  }
+  
+  .resultsArea {
+    width: 100%; /* Ocupa a largura total disponível */
+    /* Adicione padding ou margin-top conforme necessário */
+  }
+  
+  .errorMessage {
+    color: var(--color-error); /* Cor de erro */
+    font-size: var(--font-size-base);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-sm);
+    background-color: rgba(var(--color-error-rgb, 244, 67, 54), 0.1); /* Fundo sutil de erro */
+    border: 1px solid var(--color-error);
+    border-radius: var(--border-radius-sm);
+  }
+  
+  .chartsSection {
+      margin-top: var(--spacing-xl);
+      padding: var(--spacing-lg);
+      background-color: var(--color-background-card);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--box-shadow-md);
+  }
+  
+  .chartsTitle {
+      font-size: var(--font-size-large);
+      color: var(--color-text-medium);
+      margin-bottom: var(--spacing-md);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--spacing-sm);
+  }
+  
+  .chartPlaceholder {
+      text-align: center;
+      color: var(--color-text-dark);
+      font-size: var(--font-size-base);
+      padding: var(--spacing-xl);
+  }
+  
+  /* Adicionar media queries para responsividade se necessário */
+  /* @media (max-width: 768px) { ... } */

@@ -1,0 +1,78 @@
+/* frontend/src/components/AnalysisDisplay/AnalysisDisplay.module.css */
+
+.analysisContainer {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--color-background-card); /* Cor de fundo do card do tema */
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-md);
+    color: var(--color-text-light); /* Cor do texto padrão dentro deste container */
+  }
+  
+  .analysisTitle {
+    font-size: var(--font-size-large);
+    color: var(--color-text-medium); /* Cor para títulos dentro da análise */
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border); /* Linha separadora */
+    padding-bottom: var(--spacing-sm);
+  }
+  
+  /* Estilos para os elementos renderizados pelo ReactMarkdown */
+  .markdownContent h1,
+  .markdownContent h2,
+  .markdownContent h3,
+  .markdownContent h4,
+  .markdownContent h5,
+  .markdownContent h6 {
+      color: var(--color-text-medium); /* Cor dos títulos no markdown */
+      margin-top: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
+  }
+  
+  .markdownContent p {
+      margin-bottom: var(--spacing-md);
+      line-height: 1.6;
+      color: var(--color-text-light); /* Cor do texto normal no markdown */
+  }
+  
+  .markdownContent ul,
+  .markdownContent ol {
+      margin-left: var(--spacing-lg);
+      margin-bottom: var(--spacing-md);
+      color: var(--color-text-light);
+  }
+  
+  .markdownContent li {
+      margin-bottom: var(--spacing-sm);
+  }
+  
+  .markdownContent table {
+      width: 100%; /* Tabelas ocupam a largura total */
+      border-collapse: collapse; /* Remove espaço entre bordas */
+      margin-bottom: var(--spacing-md);
+      color: var(--color-text-light);
+  }
+  
+  .markdownContent th,
+  .markdownContent td {
+      border: 1px solid var(--color-border); /* Borda da tabela */
+      padding: var(--spacing-sm);
+      text-align: left;
+  }
+  
+  .markdownContent th {
+      background-color: var(--color-primary); /* Cor de fundo para cabeçalhos de tabela */
+      color: var(--color-text-light);
+      font-weight: bold;
+  }
+  
+  .markdownContent tr:nth-child(even) {
+      background-color: var(--color-background-dark); /* Fundo alternado para linhas */
+  }
+  
+  .markdownContent a {
+      color: var(--color-accent); /* Links dentro do markdown */
+      text-decoration: underline;
+  }
+  
+  /* Adicione outros estilos conforme necessário para blockquotes, code, etc. */

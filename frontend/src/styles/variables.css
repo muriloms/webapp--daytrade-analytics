@@ -1,0 +1,61 @@
+/* frontend/src/styles/variables.css */
+
+:root {
+    /* Paleta de Cores - Dark Mode Tecnológico */
+    --color-background-dark: #1A1A2E; /* Fundo principal escuro */
+    --color-background-card: #16213E; /* Fundo de cards/containers */
+    --color-primary: #0F3460;       /* Cor primária (pode ser botões, destaques) */
+    --color-secondary: #E94560;     /* Cor secundária (para acentos, erros) */
+    --color-accent: #533483;        /* Cor de acento (para interatividade, links) */
+    --color-text-light: #E9D5DA;    /* Texto claro (principal) */
+    --color-text-medium: #BAD7E9;   /* Texto médio (subtítulos, labels) */
+    --color-text-dark: #A0A0A0;     /* Texto escuro (detalhes, placeholders) */
+    --color-border: #2B2B4F;       /* Cor de bordas e divisores */
+    --color-success: #4CAF50;       /* Cor para sucesso */
+    --color-warning: #FFC107;       /* Cor para avisos */
+    --color-error: #F44336;         /* Cor para erros (usamos secondary tbm) */
+    /* Variáveis RGB para uso com rgba() */
+    --color-background-dark-rgb: 26, 26, 46;
+    --color-background-card-rgb: 22, 33, 62;
+    --color-primary-rgb: 15, 52, 96;
+    --color-secondary-rgb: 233, 69, 96;
+    --color-accent-rgb: 83, 52, 131;
+    --color-text-light-rgb: 233, 213, 218;
+    --color-text-medium-rgb: 186, 215, 233;
+    --color-text-dark-rgb: 160, 160, 160;
+    --color-border-rgb: 43, 43, 79;
+    --color-success-rgb: 76, 175, 80;
+    --color-warning-rgb: 255, 193, 7;
+    --color-error-rgb: 244, 67, 54;
+  
+    /* Espaçamento */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+  
+    /* Tipografia */
+    /* Considere usar uma fonte moderna. Ex: 'Roboto Mono', 'Space Mono', 'Fira Code' */
+    /* Você precisará importar a fonte (via link no index.html ou @import no CSS) */
+    --font-family-primary: 'Inter', sans-serif; /* Mantendo a Inter do template por enquanto */
+    --font-family-mono: 'Space Mono', monospace; /* Para dados técnicos, código */
+  
+    --font-size-small: 0.875rem; /* 14px */
+    --font-size-base: 1rem;      /* 16px */
+    --font-size-medium: 1.125rem; /* 18px */
+    --font-size-large: 1.5rem;   /* 24px */
+    --font-size-xl: 2rem;        /* 32px */
+    --font-size-xxl: 2.5rem;       /* 40px */
+  
+    /* Bordas e Sombras */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+  
+    /* Sombras (ajustar conforme preferência para tema escuro) */
+    --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --box-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --box-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }

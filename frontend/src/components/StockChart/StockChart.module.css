@@ -1,0 +1,23 @@
+/* frontend/src/components/StockChart/StockChart.module.css */
+
+.chartContainer {
+    width: 100%; /* Ocupa a largura total do seu contêiner pai */
+    margin-bottom: var(--spacing-lg); /* Espaço abaixo de cada gráfico */
+    /* Opcional: Adicionar padding ou background-color se o card for o pai direto */
+    /* Ex: background-color: var(--color-background-card); padding: var(--spacing-md); */
+  }
+  
+  /* Garante que o elemento Plotly dentro do container se ajuste */
+  .chartContainer .js-plotly-plot {
+      width: 100% !important;
+      height: 100% !important;
+  }
+  
+  .noDataMessage {
+      text-align: center;
+      color: var(--color-text-dark);
+      font-size: var(--font-size-base);
+      padding: var(--spacing-md);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--border-radius-sm);
+  }

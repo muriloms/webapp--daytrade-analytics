@@ -1,0 +1,9 @@
+#root {
+  /* max-width: 1280px; */ /* Removido para permitir largura total */
+  margin: 0 auto;
+  /* padding: 2rem; */ /* Removido para controlar padding no layout */
+  text-align: center; /* Pode ser ajustado */
+  width: 100%; /* Usar 100% da largura disponível */
+  min-height: 100vh; /* Ocupar pelo menos a altura da viewport */
+}
+/* Outros estilos padrão... */

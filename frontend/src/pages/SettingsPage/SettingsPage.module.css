@@ -1,0 +1,87 @@
+/* frontend/src/pages/SettingsPage/SettingsPage.module.css */
+
+.settingsPageContainer {
+    padding: var(--spacing-lg);
+    color: var(--color-text-light);
+    max-width: 700px; /* Largura máxima um pouco menor que a página de análise */
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .pageTitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-medium);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+  }
+  
+  .settingsSection {
+    margin-bottom: var(--spacing-xxl); /* Espaço generoso entre seções */
+    padding: var(--spacing-lg);
+    background-color: var(--color-background-card);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-large);
+    color: var(--color-text-medium);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-sm);
+  }
+  
+  .sectionDescription {
+      font-size: var(--font-size-base);
+      color: var(--color-text-light);
+      margin-bottom: var(--spacing-lg);
+  }
+  
+  
+  /* --- Estilo Básico para o Toggle/Checkbox --- */
+  /* Ajusta o label para usar flexbox para alinhar texto e input */
+  .toggleLabel {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-base);
+    color: var(--color-text-light);
+    cursor: pointer; /* Indica que é clicável */
+    margin-bottom: var(--spacing-md);
+  }
+  
+  /* Estilo para o checkbox padrão (pode ser substituído por um slider CSS customizado) */
+  .toggleInput {
+    margin-left: var(--spacing-md); /* Espaço entre o texto e o checkbox */
+    /* Outros estilos para customizar o checkbox podem ser adicionados aqui */
+     width: 20px; /* Tamanho básico */
+     height: 20px;
+     /* Aparência customizada requer ocultar o default e usar pseudo-elementos */
+  }
+  
+  /* --- Estilo para Opções de Modelo (Radio Buttons) --- */
+  .modelOptions {
+      display: flex;
+      flex-direction: column; /* Opções em coluna */
+      gap: var(--spacing-sm); /* Espaço entre as opções */
+  }
+  
+  .modelOptionLabel {
+      display: flex;
+      align-items: center;
+      font-size: var(--font-size-base);
+      color: var(--color-text-light);
+      cursor: pointer;
+      /* Opcional: Adicionar padding ou hover effect para cada opção */
+      /* padding: var(--spacing-sm); */
+      /* border-radius: var(--border-radius-sm); */
+      /* transition: background-color 0.2s ease; */
+  }
+  
+  /* .modelOptionLabel:hover {
+       background-color: rgba(var(--color-primary-rgb), 0.1);
+  } */
+  
+  .radioInput {
+     margin-right: var(--spacing-sm); /* Espaço entre o radio e o texto */
+      /* Estilos customizados para o radio button podem vir aqui */
+  }

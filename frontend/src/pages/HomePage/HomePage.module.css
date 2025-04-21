@@ -1,0 +1,62 @@
+/* frontend/src/pages/HomePage/HomePage.module.css */
+
+.homeContainer {
+    padding: var(--spacing-lg); /* Padding interno */
+    color: var(--color-text-light); /* Cor do texto padrão */
+    max-width: 800px; /* Largura máxima para o conteúdo central */
+    margin: 0 auto; /* Centraliza o container na área de conteúdo */
+    text-align: center; /* Centraliza o texto */
+  }
+  
+  .title {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-medium); /* Cor do título do tema */
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-medium);
+    color: var(--color-text-medium);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .contentCard {
+    background-color: var(--color-background-card); /* Cor de fundo do card do tema */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
+    margin-bottom: var(--spacing-xl);
+    text-align: left; /* Alinha o texto do card à esquerda */
+  }
+  
+  .contentCard h2,
+  .contentCard p {
+      color: var(--color-text-light); /* Garante que o texto dentro do card seja claro */
+  }
+  
+  .contentCard ul {
+      margin-left: var(--spacing-lg); /* Indenta a lista */
+      margin-bottom: var(--spacing-md);
+  }
+  
+  .contentCard li {
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-text-light);
+  }
+  
+  .descriptionText {
+      font-size: var(--font-size-small);
+      color: var(--color-text-dark);
+      margin-top: var(--spacing-md); /* Espaço acima deste parágrafo */
+  }
+  
+  
+  .footerText {
+      font-size: var(--font-size-small);
+      color: var(--color-text-dark);
+      margin-top: var(--spacing-lg);
+  }
+  
+  
+  /* Ajustes de responsividade podem ser adicionados aqui futuramente */
+  /* @media (max-width: 768px) { ... } */

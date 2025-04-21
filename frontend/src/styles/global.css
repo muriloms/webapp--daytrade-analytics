@@ -1,0 +1,54 @@
+/* frontend/src/styles/global.css */
+
+/* Importa as variáveis do tema */
+@import './variables.css';
+
+/* Reset Básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Facilita o layout com padding/border */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  line-height: 1.6;
+  color: var(--color-text-light); /* Cor do texto base */
+  background-color: var(--color-background-dark); /* Cor de fundo base */
+  min-height: 100vh; /* Garante que o body ocupa pelo menos a altura total */
+  display: flex; /* Usa flexbox para o layout principal (body -> #root) */
+  width: 100%;
+}
+
+#root {
+  /* O #root será o container principal para o layout (menu + conteúdo) */
+  flex-grow: 1; /* Permite que o root preencha o espaço disponível */
+  display: flex; /* Também flex para organizar o menu e o conteúdo */
+  width: 100%; /* Ocupa toda a largura do body */
+}
+
+a {
+  color: var(--color-accent); /* Cor dos links */
+  text-decoration: none; /* Sem sublinhado padrão */
+}
+
+a:hover {
+  text-decoration: underline; /* Sublinhado ao passar o mouse */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-medium); /* Cor dos títulos */
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Ajustes no template Vite App.css se necessário, ou remova-o */
+/* Se App.css existir, você pode remover a importação em App.jsx */
+/* ou ajustar seu conteúdo para não conflitar. Sugiro remover por enquanto. */
+/* Remova a importação './App.css' de frontend/src/App.jsx */

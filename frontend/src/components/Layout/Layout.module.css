@@ -1,0 +1,106 @@
+/* frontend/src/components/Layout/Layout.module.css */
+
+.layoutContainer {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-background-dark);
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--color-background-card);
+  color: var(--color-text-light);
+  padding: var(--spacing-lg) var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--color-border);
+  box-shadow: var(--box-shadow-md);
+  z-index: 100;
+}
+
+.sidebarHeader {
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.appTitle {
+    font-size: var(--font-size-large);
+    font-weight: bold;
+    color: var(--color-secondary); /* Cor de destaque para o título */
+    margin-bottom: 0; /* Remove margin-bottom padrão do h2 */
+}
+/* Se o título for um link, estilize-o como tal */
+/* .appTitleLink {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.appTitleLink:hover {
+    color: var(--color-accent);
+} */
+
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.navLink {
+  display: block;
+  color: var(--color-text-medium);
+  padding: var(--spacing-md); /* Ajustado padding */
+  border-radius: var(--border-radius-sm);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: var(--font-size-base);
+}
+
+.navLink:hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+}
+
+/* --- Estilo para o link ativo --- */
+.navLink.active {
+  background-color: var(--color-accent); /* Fundo destacado para link ativo */
+  color: var(--color-text-light); /* Texto claro para link ativo */
+  font-weight: bold; /* Texto em negrito */
+   /* Opcional: adicionar uma borda ou indicador visual */
+   /* border-left: 4px solid var(--color-secondary); */
+   /* padding-left: calc(var(--spacing-md) - 4px); */
+}
+/* --- Fim Estilo para o link ativo --- */
+
+
+.sidebarFooter {
+    margin-top: auto;
+    text-align: center;
+    font-size: var(--font-size-small);
+    color: var(--color-text-dark);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-md);
+}
+
+.mainContent {
+  flex-grow: 1;
+  padding: var(--spacing-lg); /* Padding interno */
+  overflow-y: auto; /* Adiciona scroll */
+  width: calc(100% - 250px); /* Ocupa o restante da largura */
+  /* Opcional: Adicionar background-color aqui se for diferente do layoutContainer */
+  /* background-color: var(--color-background-dark); */
+}
+
+.notFound {
+    font-size: var(--font-size-xl);
+    color: var(--color-secondary);
+    text-align: center;
+    margin-top: var(--spacing-xxl);
+}
+
+/* Adicionar media queries para responsividade (ex: esconder sidebar em mobile) futuramente */
+/* @media (max-width: 768px) { ... } */
