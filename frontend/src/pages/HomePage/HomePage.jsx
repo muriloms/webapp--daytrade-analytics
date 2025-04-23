@@ -6,7 +6,7 @@ import styles from './HomePage.module.css'; // Importa os estilos CSS Module
 const HomePage = () => {
   return (
     <div className={styles.homeContainer}> {/* Container da página inicial */}
-      <h1 className={styles.title}>Bem-vindo ao DSA Financial Analytics</h1>
+      <h1 className={styles.title}>Bem-vindo ao Fourbank Financial Analytics</h1>
       <p className={styles.subtitle}>
         Sua plataforma para análise em tempo real do mercado de ações com o poder da Inteligência Artificial.
       </p>

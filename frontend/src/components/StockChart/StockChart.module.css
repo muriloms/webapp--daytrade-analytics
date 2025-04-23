@@ -1,10 +1,10 @@
 /* frontend/src/components/StockChart/StockChart.module.css */
 
 .chartContainer {
-    width: 100%; /* Ocupa a largura total do seu contêiner pai */
-    margin-bottom: var(--spacing-lg); /* Espaço abaixo de cada gráfico */
+    width: 100%;
+    margin-bottom: var(--spacing-lg);
+    position: relative; /* *** Adicionado: Necessário para posicionamento absoluto interno *** */
     /* Opcional: Adicionar padding ou background-color se o card for o pai direto */
-    /* Ex: background-color: var(--color-background-card); padding: var(--spacing-md); */
   }
   
   /* Garante que o elemento Plotly dentro do container se ajuste */
@@ -15,9 +15,38 @@
   
   .noDataMessage {
       text-align: center;
-      color: var(--color-text-dark);
+      color: var(--color-text-light); /* Ajustado para nova paleta */
       font-size: var(--font-size-base);
       padding: var(--spacing-md);
       border: 1px dashed var(--color-border);
       border-radius: var(--border-radius-sm);
   }
+  
+  /* --- Estilo para o Botão Expandir --- */
+  .expandButton {
+    position: absolute; /* Posicionamento absoluto dentro do container */
+    top: var(--spacing-sm); /* Espaço do topo */
+    right: var(--spacing-sm); /* Espaço da direita */
+    z-index: 5; /* Garante que fique acima do gráfico */
+    background-color: rgba(var(--color-primary), 0.7); /* Fundo semi-transparente */
+    color: var(--color-text-light); /* Cor do texto/ícone */
+    border: none;
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    line-height: 1; /* Ajusta alinhamento vertical do texto/símbolo */
+    transition: background-color 0.2s ease; /* Transição suave */
+    display: flex; /* Para centralizar o símbolo se for um ícone */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .expandButton:hover {
+    background-color: var(--color-accent); /* Cor de destaque no hover */
+  }
+  
+  .expandButton:active {
+      transform: scale(0.95); /* Efeito de "apertar" */
+  }
+  /* --- Fim Estilo para o Botão Expandir --- */

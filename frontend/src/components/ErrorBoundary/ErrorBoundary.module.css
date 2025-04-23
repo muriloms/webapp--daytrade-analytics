@@ -1,0 +1,30 @@
+/* frontend/src/components/ErrorBoundary/ErrorBoundary.module.css */
+
+/* Estilo para o contêiner da mensagem de erro de fallback */
+.errorFallback {
+    padding: var(--spacing-md);
+    border: 2px dashed var(--color-error); /* Borda vermelha tracejada */
+    border-radius: var(--border-radius-sm);
+    background-color: rgba(var(--color-error-rgb), 0.05); /* Fundo vermelho transparente */
+    color: var(--color-error); /* Texto vermelho */
+    text-align: center;
+    margin: var(--spacing-md) 0; /* Espaço vertical */
+    width: 100%; /* Ocupa a largura total do seu contêiner pai */
+    /* Garante que o texto não transborde */
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Estilo para o título da mensagem de erro */
+  .errorTitle {
+      font-size: var(--font-size-base);
+      color: var(--color-error);
+      margin-bottom: var(--spacing-sm);
+  }
+  
+  /* Estilo para a mensagem de erro detalhada (opcional) */
+  .errorMessage {
+      font-size: var(--font-size-small);
+      color: var(--color-error);
+      margin-bottom: 0;
+  }

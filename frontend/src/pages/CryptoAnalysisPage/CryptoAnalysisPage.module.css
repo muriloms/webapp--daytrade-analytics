@@ -1,6 +1,6 @@
 /* frontend/src/pages/StockAnalysisPage/StockAnalysisPage.module.css */
 
-.analysisPageContainer {
+.cryptoAnalysisPageContainer {
   padding: var(--spacing-lg);
   color: var(--color-text-dark);
   max-width: 1800px; /* Aumenta ainda mais largura máxima para dashboard maior */
@@ -281,9 +281,9 @@
 }
 /* --- Fim NOVO --- */
 
-/* --- Estilo para o Link para Lista de Tickers (Reutiliza nome de classe) --- */
+/* --- NOVO: Estilo para o Link para Lista de Tickers (Copiado de Stock) --- */
 .yahooLinkButton {
-  display: inline-flex;
+  display: inline-flex; /* Usa inline-flex para alinhamento e padding */
   align-items: center;
   padding: var(--spacing-md) var(--spacing-lg);
   font-size: var(--font-size-base);
@@ -299,11 +299,10 @@
 }
 
 .yahooLinkButton:hover {
-  background-color: color-mix(in srgb, var(--color-secondary) 80%, black 20%);
-  color: var(--color-text-dark);
+  background-color: color-mix(in srgb, var(--color-secondary) 80%, black 20%); /* Escurece sutilmente no hover */
+  color: var(--color-text-dark); /* Texto mais escuro no hover (opcional) */
 }
 
 .yahooLinkButton:active {
     transform: scale(0.95);
 }
-/* --- Fim Estilo --- */

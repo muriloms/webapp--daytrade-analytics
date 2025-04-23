@@ -19,7 +19,7 @@ try:
     else:
         # Define os modelos a serem usados (verifique a disponibilidade na Groq)
         # Usaremos modelos comuns, ajuste se precisar de modelos específicos como deepseek-r1-distill
-        groq_model_70b = "deepseek-r1-distill-llama-70b"#"llama-3.1-70b-versatile" # ou um modelo 70B equivalente disponível
+        groq_model_70b = "llama-3.1-8b-instant"#"llama-3.1-70b-versatile" # ou um modelo 70B equivalente disponível
         groq_model_8b = "llama-3.1-8b-instant"    # ou um modelo 8B equivalente disponível
 
 

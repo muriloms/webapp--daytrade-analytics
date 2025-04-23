@@ -1,14 +1,13 @@
 // frontend/src/components/StockChart/StockChart.jsx
 
 import React from 'react';
-// Importa o componente Plot da biblioteca react-plotly.js
 import Plot from 'react-plotly.js';
-import styles from './StockChart.module.css'; // Importa os estilos CSS Module
+import styles from './StockChart.module.css';
 
-const StockChart = ({ data, layout, config, title }) => {
-  // Verifica se há dados para renderizar o gráfico
+// --- Adiciona a prop onExpand ---
+const StockChart = ({ data, layout, config, title, onExpand }) => {
+  // Não renderiza nada ou mensagem se não houver dados
   if (!data || data.length === 0) {
-    // Você pode retornar null, uma mensagem, ou um placeholder
     return (
         <div className={styles.chartContainer}>
            <p className={styles.noDataMessage}>Sem dados para exibir o gráfico.</p>
@@ -16,79 +15,77 @@ const StockChart = ({ data, layout, config, title }) => {
     );
   }
 
-  // Configuração padrão para o Plotly, se não for fornecida
-  // displayModeBar: false remove a barra de ferramentas do Plotly
+  // Configuração padrão para o Plotly, mescla com o fornecido
   const defaultPlotlyConfig = {
     displayModeBar: false,
-    responsive: true, // Tenta ser responsivo por padrão
-     // Outras configurações padrão aqui se necessário
+    responsive: true,
   };
 
-  // Layout padrão, mescla com o layout fornecido
+  // Layout padrão, mescla com o fornecido
    const defaultLayout = {
-      // Exemplo de layout padrão que pode ser sobrescrito
-      // title: title || '', // O título principal deve vir do 'layout' prop
       font: {
-          family: 'var(--font-family-primary)', // Usa a fonte do tema
-          color: 'var(--color-text-light)' // Cor do texto do tema
+          family: 'var(--font-family-primary)',
+          color: 'var(--color-text-light)'
       },
-      paper_bgcolor: 'var(--color-background-card)', // Fundo da área do gráfico (fora do plot)
-      plot_bgcolor: 'var(--color-background-dark)', // Fundo da área de plotagem
-      margin: { t: 40, r: 20, l: 40, b: 30 }, // Margens padrão
-      hovermode: 'x unified', // Comportamento do hover
+      paper_bgcolor: 'var(--color-background-card)',
+      plot_bgcolor: 'var(--color-background-dark)',
+      margin: { t: 40, r: 20, l: 40, b: 30 },
+      hovermode: 'x unified',
       xaxis: {
-        showgrid: false, // Remove grid do eixo X
-        zeroline: false, // Remove linha zero do eixo X
-        color: 'var(--color-text-medium)', // Cor dos labels/tick marks do eixo X
-        tickfont: {
-            color: 'var(--color-text-dark)' // Cor dos ticks
-        },
-        title: {
-            font: {
-                color: 'var(--color-text-medium)' // Cor do título do eixo
-            }
-        }
+        showgrid: false,
+        zeroline: false,
+        color: 'var(--color-text-medium)',
+        tickfont: { color: 'var(--color-text-dark)' },
+        title: { font: { color: 'var(--color-text-medium)' } }
       },
        yaxis: {
-        showgrid: true, // Mantém grid do eixo Y
-        gridcolor: 'var(--color-border)', // Cor do grid do eixo Y
+        showgrid: true,
+        gridcolor: 'var(--color-border)',
         zeroline: false,
-         color: 'var(--color-text-medium)', // Cor dos labels/tick marks do eixo Y
-         tickfont: {
-             color: 'var(--color-text-dark)' // Cor dos ticks
-         },
-          title: {
-             font: {
-                 color: 'var(--color-text-medium)' // Cor do título do eixo
-             }
-         }
+         color: 'var(--color-text-medium)',
+         tickfont: { color: 'var(--color-text-dark)' },
+          title: { font: { color: 'var(--color-text-medium)' } }
       },
       legend: {
-          font: {
-              color: 'var(--color-text-light)' // Cor do texto da legenda
-          }
-          // Outras configs de posição da legenda virão do layout prop
+          font: { color: 'var(--color-text-light)' }
       },
-      // Layout responsivo básico
       autosize: true,
-      // height: 300, // Altura padrão, pode ser sobrescrita
    };
 
 
-  // Mescla as configurações padrão com as props recebidas
   const finalLayout = { ...defaultLayout, ...layout };
   const finalConfig = { ...defaultPlotlyConfig, ...config };
 
+  // --- Manipulador de clique para o botão Expandir ---
+  const handleExpandClick = () => {
+      // Chama a função onExpand passada via prop, passando os dados e config do gráfico
+      if (onExpand) {
+          onExpand({ data, layout, config });
+      }
+  };
+  // --- Fim Manipulador ---
+
 
   return (
-    <div className={styles.chartContainer}> {/* Container para aplicar estilos */}
+    // Container para aplicar estilos, agora com position: relative para posicionamento absoluto interno
+    <div className={styles.chartContainer}>
+      {/* Botão ou ícone de Expandir - Renderiza SOMENTE se a prop onExpand for fornecida */}
+      {onExpand && (
+          <button
+              className={styles.expandButton}
+              onClick={handleExpandClick}
+              title="Expandir Gráfico" // Tooltip
+          >
+              ↗ {/* Símbolo simples de expandir */}
+          </button>
+      )}
+
       {/* O componente Plot renderiza o gráfico */}
       <Plot
-        data={data} // Dados do gráfico (array de traces)
-        layout={finalLayout} // Configurações de layout
-        config={finalConfig} // Configurações gerais do Plotly
-        // style={{ width: '100%', height: '100%' }} // Ocupa o container
-        style={{ width: '100%', height: layout?.height || 300 }} // Usa altura do layout ou default
+        data={data}
+        layout={finalLayout}
+        config={finalConfig}
+        style={{ width: '100%', height: finalLayout?.height || 300 }}
       />
     </div>
   );

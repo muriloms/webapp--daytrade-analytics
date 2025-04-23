@@ -8,10 +8,10 @@
 }
 
 .sidebar {
-  width: 250px;
+  width: 220px; /* Reduzindo a largura (era 250px) */
   background-color: var(--color-background-card);
   color: var(--color-text-light);
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md); /* Mantém padding, ajustar conforme visual */
   display: flex;
   flex-direction: column;
   border-right: 1px solid var(--color-border);
@@ -22,23 +22,19 @@
 .sidebarHeader {
   margin-bottom: var(--spacing-xl);
   text-align: center;
+  padding-bottom: var(--spacing-md); /* Espaço abaixo do header */
+  border-bottom: 1px solid var(--color-border); /* Separador visual */
 }
 
 .appTitle {
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-large); /* Mantém tamanho ou ajusta */
     font-weight: bold;
-    color: var(--color-secondary); /* Cor de destaque para o título */
-    margin-bottom: 0; /* Remove margin-bottom padrão do h2 */
+    color: var(--color-secondary); /* Cor de destaque */
+    margin-bottom: 0;
+    letter-spacing: 1px; /* Espaçamento sutil entre letras */
 }
-/* Se o título for um link, estilize-o como tal */
-/* .appTitleLink {
-    color: var(--color-secondary);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-.appTitleLink:hover {
-    color: var(--color-accent);
-} */
+/* Opcional: Usar fonte mono para o título do app se disponível no tema */
+/* .appTitle { font-family: var(--font-family-mono); } */
 
 
 .navigation ul {
@@ -48,31 +44,33 @@
 }
 
 .navigation li {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm); /* Espaço entre os itens */
 }
 
 .navLink {
-  display: block;
+  display: flex; /* Usa flexbox para alinhamento interno se adicionar ícones */
+  align-items: center; /* Alinha texto/ícone */
+  gap: var(--spacing-md); /* Espaço entre ícone e texto se adicionar ícone */
   color: var(--color-text-medium);
-  padding: var(--spacing-md); /* Ajustado padding */
+  padding: var(--spacing-sm) var(--spacing-md); /* Padding reduzido verticalmente */
   border-radius: var(--border-radius-sm);
-  transition: background-color 0.2s ease, color 0.2s ease;
-  font-size: var(--font-size-base);
+  transition: background-color 0.2s ease, color 0.2s ease, border-left-color 0.2s ease;
+  font-size: var(--font-size-base); /* ou ligeiramente menor, ex: var(--font-size-small) */
+  border-left: 4px solid transparent; /* Borda sutil à esquerda (animada no ativo) */
 }
 
 .navLink:hover {
-  background-color: var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb), 0.3); /* Fundo sutil transparente no hover */
   color: var(--color-text-light);
+  /* border-left-color: var(--color-primary); /* Indicador sutil no hover */
 }
 
-/* --- Estilo para o link ativo --- */
+/* --- Estilo para o link ativo (Aprimorado) --- */
 .navLink.active {
-  background-color: var(--color-accent); /* Fundo destacado para link ativo */
-  color: var(--color-text-light); /* Texto claro para link ativo */
-  font-weight: bold; /* Texto em negrito */
-   /* Opcional: adicionar uma borda ou indicador visual */
-   /* border-left: 4px solid var(--color-secondary); */
-   /* padding-left: calc(var(--spacing-md) - 4px); */
+  background-color: var(--color-accent); /* Fundo destacado forte para link ativo */
+  color: var(--color-text-light);
+  font-weight: bold;
+  border-left-color: var(--color-secondary); /* Indicador forte à esquerda */
 }
 /* --- Fim Estilo para o link ativo --- */
 
@@ -90,9 +88,7 @@
   flex-grow: 1;
   padding: var(--spacing-lg); /* Padding interno */
   overflow-y: auto; /* Adiciona scroll */
-  width: calc(100% - 250px); /* Ocupa o restante da largura */
-  /* Opcional: Adicionar background-color aqui se for diferente do layoutContainer */
-  /* background-color: var(--color-background-dark); */
+  width: calc(100% - 220px); /* Ajusta a largura para a nova largura da sidebar */
 }
 
 .notFound {

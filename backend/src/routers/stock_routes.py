@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException, Path, Body # Importa Body para ler
 
 # Importa a ferramenta para buscar dados históricos diretamente
 from src.tools.yfinance_tool import get_historical_data
+from src.tools.yfinance_tool import get_company_info
 # Importa o serviço de IA
 from src.services.ai_service import get_ai_analysis
 # Importa o modelo Pydantic para a requisição de IA
@@ -15,7 +16,7 @@ router = APIRouter(
     tags=["stocks"] # Mantém a tag para organização na documentação
 )
 
-# --- Novo Endpoint para Dados Históricos (GET) ---
+# ---  Endpoint para Dados Históricos (GET) ---
 @router.get("/data/{ticker}")
 async def get_stock_historical_data(
     ticker: str = Path(..., title="Stock Ticker Symbol", min_length=1)
@@ -45,7 +46,7 @@ async def get_stock_historical_data(
     print(f"Dados históricos encontrados para o ticker: {ticker}")
     return {"historical_data": historical_data}
 
-# --- Novo Endpoint para Análise de IA (POST) ---
+# ---  Endpoint para Análise de IA (POST) ---
 @router.post("/analyze/{ticker}")
 async def get_stock_ai_analysis(
     ticker: str = Path(..., title="Stock Ticker Symbol", min_length=1),
@@ -81,6 +82,38 @@ async def get_stock_ai_analysis(
     # Envolvemos a string em um dicionário para consistência do formato da resposta JSON.
     return {"ai_analysis": ai_analysis_result}
 
-# Você pode adicionar outros endpoints relacionados a ações aqui futuramente
-# Ex: /api/v1/stocks/{ticker}/fundamentals (GET)
-# Ex: /api/v1/stocks/{ticker}/news (GET)
+# ---  Endpoint para Informações da Empresa (GET /info/{ticker}) ---
+@router.get("/info/{ticker}")
+async def get_stock_company_info(
+    ticker: str = Path(..., title="Stock Ticker Symbol", min_length=1)
+):
+    """
+    Retorna informações básicas da empresa para um dado ticker.
+
+    Args:
+        ticker (str): O símbolo do ticker da empresa (ex: "MSFT").
+
+    Returns:
+        dict: Um dicionário contendo 'company_info' (dict de informações selecionadas).
+
+    Raises:
+        HTTPException: 404 Not Found se o ticker for inválido ou informações não forem encontradas.
+    """
+    print(f"Recebida requisição GET por informações da empresa para ticker: {ticker}")
+
+    # Chama a nova função da ferramenta para obter informações da empresa
+    company_info = get_company_info(ticker)
+
+    # Verifica se as informações foram encontradas
+    if company_info is None:
+        print(f"Informações da empresa não encontradas para o ticker: {ticker}")
+        # Retorna 404 se a ferramenta não encontrou info (ticker inválido, etc.)
+        raise HTTPException(status_code=404, detail=f"Informações da empresa não encontradas para: {ticker}")
+
+    print(f"Informações da empresa encontradas para o ticker: {ticker}")
+    # Retorna as informações em um dicionário
+    return {"company_info": company_info}
+
+
+
+

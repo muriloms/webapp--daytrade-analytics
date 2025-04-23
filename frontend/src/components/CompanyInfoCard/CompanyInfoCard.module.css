@@ -1,0 +1,82 @@
+/* frontend/src/components/CompanyInfoCard/CompanyInfoCard.module.css */
+
+.companyInfoContainer {
+    /* Este container será posicionado dentro de um .dashboardCard na página que o usa */
+    /* O .dashboardCard já fornece padding, background, border, shadow */
+    /* Adicione estilos específicos aqui se necessário */
+    width: 100%; /* Ocupa a largura total do seu contêiner pai (.dashboardCard) */
+    display: flex;
+    flex-direction: column;
+    /* gap: var(--spacing-sm); */ /* Espaço entre os elementos internos */
+  }
+  
+  .infoUnavailable {
+      text-align: center;
+      color: var(--color-text-light); /* Cinza azulado */
+      font-size: var(--font-size-base);
+      padding: var(--spacing-md);
+  }
+  
+  
+  .companyName {
+    font-size: var(--font-size-large); /* Tamanho do nome da empresa */
+    color: var(--color-heading); /* Cor dos títulos (Azul Escuro) */
+    margin-bottom: var(--spacing-xs); /* Espaço menor abaixo do nome */
+  }
+  
+  .longName {
+      font-size: var(--font-size-base);
+      color: var(--color-text-medium); /* Cor secundária */
+      margin-bottom: var(--spacing-md);
+  }
+  
+  
+  .detailsGrid {
+      display: grid; /* Habilita Grid para os detalhes */
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Colunas responsivas, mínimo 150px */
+      gap: var(--spacing-sm) var(--spacing-md); /* Espaço entre os itens do grid */
+      margin-top: var(--spacing-sm); /* Espaço acima do grid de detalhes */
+  }
+  
+  .detailItem {
+      display: flex;
+      flex-direction: column; /* Label em cima, Valor embaixo */
+      /* gap: var(--spacing-xs); */ /* Espaço entre label e valor */
+  }
+  
+  .detailItemFull {
+       grid-column: 1 / -1; /* Item ocupa todas as colunas disponíveis no grid */
+       display: flex;
+       flex-direction: column;
+       /* gap: var(--spacing-xs); */
+  }
+  
+  
+  .detailLabel {
+    font-size: var(--font-size-small); /* Tamanho menor para o label */
+    color: var(--color-text-light); /* Cor clara para o label */
+    font-weight: bold;
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase; /* Label em caixa alta */
+  }
+  
+  .detailValue {
+    font-size: var(--font-size-base); /* Tamanho base para o valor */
+    color: var(--color-text-dark); /* Cor escura para o valor */
+    word-break: break-word; /* Quebra palavras longas se necessário */
+  }
+  
+  .detailValueLink {
+      font-size: var(--font-size-base);
+      color: var(--color-accent); /* Cor de link (Azul Médio/Brilhante) */
+      text-decoration: none;
+      word-break: break-word;
+      transition: color 0.2s ease;
+  }
+  .detailValueLink:hover {
+      color: var(--color-primary); /* Azul Escuro no hover */
+      text-decoration: underline;
+  }
+  
+  /* Estilos específicos para o resumo do negócio se incluído */
+  /* .businessSummary .detailValue { font-size: var(--font-size-small); line-height: 1.4; } */

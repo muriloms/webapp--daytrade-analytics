@@ -104,8 +104,55 @@ const getAIAnalysis = async (ticker, modelId) => {
 };
 
 
-// Exporta as novas funções
+/**
+ * Busca informações básicas da empresa para um dado ticker.
+ * Corresponde ao endpoint GET /api/v1/stocks/info/{ticker}
+ *
+ * @param {string} ticker O símbolo do ticker da empresa.
+ * @returns {Promise<object|null>} Uma Promise que resolve com um objeto contendo
+ * 'company_info' (dict), ou null em caso de erro 404.
+ * @throws {Error} Lança um erro se a requisição falhar por outros motivos (rede, servidor 5xx).
+ */
+const getCompanyInfo = async (ticker) => {
+  try {
+    const endpoint = `/api/v1/stocks/info/${ticker}`;
+    console.log(`Chamando API (Informações Empresa): ${API_BASE_URL}${endpoint}`);
+
+    const response = await api.get(endpoint);
+
+    console.log("Resposta da API (Informações Empresa) recebida:", response.data);
+
+    return response.data; // Deve conter { company_info: { ... } }
+
+  } catch (error) {
+    console.error("Erro na chamada da API (Informações Empresa):", error);
+
+    if (error.response) {
+      console.error("Status do erro (Informações Empresa):", error.response.status);
+      console.error("Dados do erro (Informações Empresa):", error.response.data);
+
+      if (error.response.status === 404) {
+        // Ticker não encontrado ou sem informações da empresa
+        console.log(`Informações da empresa para "${ticker}" não encontradas.`);
+        return null; // Indica especificamente 404
+      } else {
+         const errorMessage = error.response.data.detail || `Erro da API (Informações Empresa): Status ${error.response.status}`;
+         throw new Error(errorMessage);
+      }
+    } else if (error.request) {
+      console.error("Nenhuma resposta recebida da API (Informações Empresa).");
+      throw new Error("Erro de conexão com o backend ao buscar informações da empresa.");
+    } else {
+      console.error("Erro ao configurar a requisição (Informações Empresa):", error.message);
+      throw new Error(`Erro ao processar requisição de informações da empresa: ${error.message}`);
+    }
+  }
+};
+
+
+// Exporta as TRES funções
 export {
   getHistoricalData,
-  getAIAnalysis
+  getAIAnalysis,
+  getCompanyInfo // --- NOVO: Exporta a nova função ---
 };

@@ -1,87 +1,145 @@
 /* frontend/src/pages/SettingsPage/SettingsPage.module.css */
 
 .settingsPageContainer {
-    padding: var(--spacing-lg);
+  padding: var(--spacing-lg); /* Padding interno */
+  color: var(--color-text-light); /* Cor do texto padrão */
+  max-width: 700px; /* Largura máxima */
+  margin: var(--spacing-lg) auto; /* Centraliza com margem superior/inferior */
+  width: 100%;
+  /* Adicione um fundo sutil ou borda se desejar */
+  /* background-color: var(--color-background-dark); */
+  /* border-radius: var(--border-radius-md); */
+}
+
+.pageTitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-medium);
+  margin-bottom: var(--spacing-xxl); /* Mais espaço abaixo do título principal */
+  text-align: center;
+  /* Adicione um separador visual se desejar */
+  /* border-bottom: 2px solid var(--color-primary); */
+  /* padding-bottom: var(--spacing-md); */
+}
+
+.settingsSection {
+  margin-bottom: var(--spacing-xxl); /* Espaço generoso entre seções */
+  padding: var(--spacing-lg);
+  background-color: var(--color-background-card); /* Fundo de card do tema */
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-sm); /* Sombra sutil */
+  border: 1px solid var(--color-border); /* Borda sutil */
+}
+
+.sectionTitle {
+  font-size: var(--font-size-large);
+  color: var(--color-text-medium);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border); /* Linha separadora */
+  padding-bottom: var(--spacing-sm);
+}
+
+.sectionDescription {
+    font-size: var(--font-size-base);
     color: var(--color-text-light);
-    max-width: 700px; /* Largura máxima um pouco menor que a página de análise */
-    margin: 0 auto;
-    width: 100%;
-  }
-  
-  .pageTitle {
-    font-size: var(--font-size-xl);
-    color: var(--color-text-medium);
-    margin-bottom: var(--spacing-xl);
-    text-align: center;
-  }
-  
-  .settingsSection {
-    margin-bottom: var(--spacing-xxl); /* Espaço generoso entre seções */
-    padding: var(--spacing-lg);
-    background-color: var(--color-background-card);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--box-shadow-sm);
-  }
-  
-  .sectionTitle {
-    font-size: var(--font-size-large);
-    color: var(--color-text-medium);
-    margin-bottom: var(--spacing-md);
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: var(--spacing-sm);
-  }
-  
-  .sectionDescription {
-      font-size: var(--font-size-base);
-      color: var(--color-text-light);
-      margin-bottom: var(--spacing-lg);
-  }
-  
-  
-  /* --- Estilo Básico para o Toggle/Checkbox --- */
-  /* Ajusta o label para usar flexbox para alinhar texto e input */
-  .toggleLabel {
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.5;
+}
+
+/* --- Estilo para o Toggle/Checkbox --- */
+.toggleLabel {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  cursor: pointer;
+  margin-bottom: var(--spacing-md);
+  justify-content: space-between; /* Espalha texto e checkbox */
+}
+
+.toggleInput {
+  /* Ajusta o input padrão, ou oculte para estilizar com CSS customizado */
+   margin-left: var(--spacing-md); /* Espaço entre o texto e o checkbox */
+   appearance: none; /* Oculta o checkbox padrão */
+   width: 40px; /* Largura do toggle visual */
+   height: 20px; /* Altura do toggle visual */
+   background-color: var(--color-border); /* Cor de fundo "desligado" */
+   border-radius: 20px; /* Formato pill */
+   position: relative;
+   cursor: pointer;
+   transition: background-color 0.2s ease;
+}
+
+.toggleInput::before {
+   content: '';
+   position: absolute;
+   top: 2px; /* Ajusta a posição do "handle" */
+   left: 2px;
+   width: 16px; /* Tamanho do "handle" */
+   height: 16px;
+   background-color: var(--color-text-dark); /* Cor do handle "desligado" */
+   border-radius: 50%; /* Formato circular */
+   transition: left 0.2s ease, background-color 0.2s ease;
+}
+
+.toggleInput:checked {
+    background-color: var(--color-success); /* Cor de fundo "ligado" */
+}
+
+.toggleInput:checked::before {
+    left: calc(100% - 18px); /* Move o handle para a direita */
+    background-color: var(--color-text-light); /* Cor do handle "ligado" */
+}
+
+
+/* --- Estilo para Opções de Modelo (Radio Buttons) --- */
+.modelOptions {
+    display: flex;
+    flex-direction: column; /* Opções em coluna */
+    gap: var(--spacing-sm); /* Espaço entre as opções */
+}
+
+.modelOptionLabel {
     display: flex;
     align-items: center;
     font-size: var(--font-size-base);
     color: var(--color-text-light);
-    cursor: pointer; /* Indica que é clicável */
-    margin-bottom: var(--spacing-md);
-  }
-  
-  /* Estilo para o checkbox padrão (pode ser substituído por um slider CSS customizado) */
-  .toggleInput {
-    margin-left: var(--spacing-md); /* Espaço entre o texto e o checkbox */
-    /* Outros estilos para customizar o checkbox podem ser adicionados aqui */
-     width: 20px; /* Tamanho básico */
-     height: 20px;
-     /* Aparência customizada requer ocultar o default e usar pseudo-elementos */
-  }
-  
-  /* --- Estilo para Opções de Modelo (Radio Buttons) --- */
-  .modelOptions {
-      display: flex;
-      flex-direction: column; /* Opções em coluna */
-      gap: var(--spacing-sm); /* Espaço entre as opções */
-  }
-  
-  .modelOptionLabel {
-      display: flex;
-      align-items: center;
-      font-size: var(--font-size-base);
-      color: var(--color-text-light);
-      cursor: pointer;
-      /* Opcional: Adicionar padding ou hover effect para cada opção */
-      /* padding: var(--spacing-sm); */
-      /* border-radius: var(--border-radius-sm); */
-      /* transition: background-color 0.2s ease; */
-  }
-  
-  /* .modelOptionLabel:hover {
-       background-color: rgba(var(--color-primary-rgb), 0.1);
-  } */
-  
-  .radioInput {
-     margin-right: var(--spacing-sm); /* Espaço entre o radio e o texto */
-      /* Estilos customizados para o radio button podem vir aqui */
-  }
+    cursor: pointer;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    transition: background-color 0.2s ease;
+    border: 1px solid transparent; /* Borda transparente inicial */
+}
+
+.modelOptionLabel:hover {
+     background-color: rgba(var(--color-primary-rgb), 0.1); /* Fundo sutil no hover */
+}
+
+.modelOptionLabel input[type="radio"]:checked + span {
+    /* Se você usar um span para o texto, pode estilizar ele quando o radio for checked */
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+/* Estilo customizado para o radio button (opcional, mais complexo) */
+.radioInput {
+   margin-right: var(--spacing-sm); /* Espaço entre o radio e o texto */
+    /* Oculte o input padrão e estilize um elemento customizado */
+}
+
+/* Estilo para a opção de modelo selecionada */
+.modelOptionLabel input[type="radio"]:checked ~ span {
+     /* Usa o seletor "tilde" para estilizar o span *seguinte* ao radio checked */
+     color: var(--color-accent); /* Cor de destaque para o texto da opção selecionada */
+     font-weight: bold;
+}
+/* Adiciona uma borda de destaque para a opção selecionada */
+.modelOptionLabel input[type="radio"]:checked {
+    /* targetea o input para adicionar um estilo ao PARENT label */
+    /* Não é possível selecionar o parent direto em CSS. */
+    /* Uma forma é usar JS para adicionar uma classe ao parent, ou estilizar o span/div dentro do label */
+}
+/* Alternativa: Estilizar a label quando o radio dentro dela está checked */
+.modelOptionLabel:has(input[type="radio"]:checked) {
+    background-color: rgba(var(--color-accent-rgb), 0.2); /* Fundo sutil para opção selecionada */
+    border-color: var(--color-accent); /* Borda de destaque */
+}

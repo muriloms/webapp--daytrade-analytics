@@ -1,0 +1,50 @@
+/* frontend/src/components/Modal/Modal.module.css */
+
+.modalOverlay {
+    position: fixed; /* Fixa o modal na viewport */
+    top: 0;
+    left: 0;
+    width: 100%; /* Cobre toda a largura */
+    height: 100%; /* Cobre toda a altura */
+    max-width: 1800px; /* Largura máxima (opcional) */
+    background-color: rgba(var(--color-background-dark-rgb), 0.8); /* Fundo semi-transparente usando variável tema */
+    display: flex; /* Usa flexbox para centralizar o conteúdo */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    /* Opcional: Adicionar transição para o fade-in/out */
+    /* opacity: 0; */
+    /* transition: opacity 0.3s ease; */
+    /* Quando o modal é renderizado (isOpen=true), a opacidade seria 1 */
+    padding: 10%;
+  }
+  
+  .modalContent {
+    background-color: var(--color-surface); /* Fundo da caixa de conteúdo (branco/claro do tema) */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-lg); /* Sombra proeminente */
+    max-width: 100%; /* Largura máxima (90% da viewport) */
+    max-height: 100%; /* Altura máxima (90% da viewport) */
+    overflow: auto; /* Adiciona scroll se o conteúdo for maior que a caixa */
+    position: relative; /* Para posicionar elementos internos como botão de fechar */
+    display: flex; /* Usa flexbox caso o conteúdo interno precise */
+    flex-direction: column; /* Conteúdo empilhado */
+    /* Opcional: Animação de entrada */
+    transform: scale(1.2); 
+    /* transition: all 0.3s ease; */
+    /* Quando o modal é renderizado, transform: scale(1); */
+  }
+  
+  /* Estilo opcional para um botão de fechar dentro do modal */
+  /* .closeButton {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background: none;
+    border: none;
+    font-size: var(--font-size-large);
+    cursor: pointer;
+    color: var(--color-text-light);
+    z-index: 10; // Garante que fique acima do conteúdo
+  } */

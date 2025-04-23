@@ -1,14 +1,15 @@
 // frontend/src/components/Layout/Layout.jsx
 
-// Importa NavLink (em vez de apenas Link) e os outros componentes necessários
+// Importa NavLink e os outros componentes necessários
 import { NavLink, Routes, Route } from 'react-router-dom';
 import styles from './Layout.module.css';
 
 // Importa as páginas que serão renderizadas no conteúdo
 import HomePage from '../../pages/HomePage/HomePage';
 import StockAnalysisPage from '../../pages/StockAnalysisPage/StockAnalysisPage';
-// Importa a nova página de Configurações
-import SettingsPage from '../../pages/SettingsPage/SettingsPage'; // Importa a página de Configurações
+import SettingsPage from '../../pages/SettingsPage/SettingsPage';
+// --- NOVO: Importa a página de CriptoAnálise ---
+import CryptoAnalysisPage from '../../pages/CryptoAnalysisPage/CryptoAnalysisPage';
 
 
 const Layout = () => {
@@ -19,12 +20,11 @@ const Layout = () => {
   };
 
   return (
-    <div className={styles.layoutContainer}> {/* Container principal (Flex) */}
-
+    <div className={styles.layoutContainer}>
       {/* Barra Lateral (Menu) */}
       <aside className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
-             <h2 className={styles.appTitle}>DSA Analytics</h2>
+             <h2 className={styles.appTitle}>Fourbank Analytics</h2>
         </div>
         <nav className={styles.navigation}>
           <ul>
@@ -40,24 +40,30 @@ const Layout = () => {
                 Análise de Ações
               </NavLink>
             </li>
+            {/* --- NOVO: Link para a Página de CriptoAnálise --- */}
+             <li>
+              <NavLink to="/crypto" className={getNavLinkClass}>
+                Análise de Cripto
+              </NavLink>
+            </li>
+            {/* --- FIM NOVO --- */}
             {/* Placeholder para futuras páginas */}
             <li>
               <NavLink to="/bonds" className={getNavLinkClass}>
                 Títulos (Em Breve)
               </NavLink>
             </li>
-            {/* --- NOVO: Link para a Página de Configurações --- */}
+            {/* Link para a Página de Configurações */}
             <li>
               <NavLink to="/settings" className={getNavLinkClass}>
                 Configurações
               </NavLink>
             </li>
-            {/* --- FIM NOVO --- */}
           </ul>
         </nav>
          {/* Rodapé da Sidebar */}
          <div className={styles.sidebarFooter}>
-             <p>© 2023 DSA</p>
+             <p>© 2025 Foursys | Lab Un 2</p>
          </div>
       </aside>
 
@@ -67,9 +73,11 @@ const Layout = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/stocks" element={<StockAnalysisPage />} />
-          {/* --- NOVO: Rota para a Página de Configurações --- */}
-          <Route path="/settings" element={<SettingsPage />} /> {/* Adiciona a rota para SettingsPage */}
+          {/* --- NOVO: Rota para a Página de CriptoAnálise --- */}
+          <Route path="/crypto" element={<CryptoAnalysisPage />} /> {/* Adiciona a rota para CryptoAnalysisPage */}
           {/* --- FIM NOVO --- */}
+          {/* Rota para a Página de Configurações */}
+          <Route path="/settings" element={<SettingsPage />} />
           {/* Rotas futuras... */}
           {/* <Route path="/bonds" element={<BondsPage />} /> */}
 
