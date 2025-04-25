@@ -1,0 +1,61 @@
+# ./docker-compose.yml
+
+#version: '3.8' # Define a versão do formato do arquivo Compose
+
+# Define os serviços (containers) da sua aplicação
+services:
+
+  # --- Serviço Backend ---
+  backend:
+    # Instruções para construir a imagem do backend
+    build:
+      context: ./backend # Define o diretório de contexto para a construção (onde o Dockerfile está)
+      dockerfile: Dockerfile # Especifica o nome do Dockerfile dentro do contexto
+    
+    # Mapeia portas do contêiner para portas no seu host (sua máquina)
+    # Formato: "HOST_PORT:CONTAINER_PORT"
+    ports:
+      - "8000:8000" # Mapeia a porta 8000 do contêiner para a porta 8000 na sua máquina
+      
+    # Passa variáveis de ambiente para o contêiner
+    # Lê variáveis do arquivo .env na pasta backend/
+    # É importante que o arquivo ./backend/.env exista e contenha GROQ_API_KEY
+    env_file:
+      - ./backend/.env 
+      
+    # Opcional: Reinicia o contêiner se ele sair (útil em produção, menos crítico em dev)
+    # restart: unless-stopped
+
+    # Define o nome do contêiner (opcional, para facilitar referência)
+    # container_name: financial-analytics-backend-container
+
+  # --- Serviço Frontend ---
+  frontend:
+    # Instruções para construir a imagem do frontend
+    build:
+      context: ./frontend # Define o diretório de contexto para a construção (onde o Dockerfile está)
+      dockerfile: Dockerfile # Especifica o nome do Dockerfile dentro do contexto
+      
+    # Mapeia portas do contêiner Nginx para portas no seu host
+    # Nginx roda na porta 80 dentro do contêiner (definido no Dockerfile frontend)
+    ports:
+      - "80:80" # Mapeia a porta 80 do contêiner para a porta 80 na sua máquina (acessível via http://localhost)
+      # - "3000:80" # Alternativa: mapear para a porta 3000 se a 80 estiver ocupada (acessível via http://localhost:3000)
+
+    # O frontend (código JS no navegador) precisa saber onde o backend está
+    # A API_BASE_URL no frontend/src/constants/config.js deve ser configurada
+    # para a porta que o backend está exposto NO HOST, ou seja, http://localhost:8000
+    # pois o JS roda no navegador do seu host.
+    # Não precisamos configurar variáveis de ambiente aqui para o frontend construído
+    # pois a URL da API foi configurada diretamente no código JS.
+
+    # Opcional: Configura dependência para garantir que o backend inicie primeiro (geralmente não necessário para frontend estático)
+    # depends_on:
+    #   - backend
+
+    # Define o nome do contêiner (opcional)
+    # container_name: financial-analytics-frontend-container
+
+# O Docker Compose cria uma rede padrão e conecta os contêineres a ela.
+# Eles podem se comunicar usando os nomes dos serviços (ex: 'backend:8000' de dentro do frontend contêiner, se o frontend fizesse requisições do lado do servidor).
+# No nosso caso, o frontend é estático e o JS roda no navegador do HOST, chamando o backend via localhost:8000.
